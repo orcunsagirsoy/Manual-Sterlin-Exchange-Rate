@@ -9,11 +9,18 @@ raw_data = {'Banka': ['Akbank', 'Denizbank', 'QNB Finansbank', 'HSBC', 'İs Bank
 df = pd.DataFrame(raw_data, columns = ['Banka', 'Alis', 'Satis'])
 
 
+
 Alis = raw_data['Alis']
 Satis = raw_data['Satis']
 Banka = raw_data['Banka']
-plt.scatter(Alis,Satis)
+Colors = ['red','blue','yellow','pink','cyan','green','orange','brown','black']
 plt.xlabel('Alış')
 plt.ylabel('Satış')
 plt.title('Bankaların Sterlin Kuru')
-plt.show
+plt.tight_layout()
+
+for i, type in enumerate(Banka):
+    x = Alis[i]
+    y = Satis[i]
+    plt.scatter(x, y, marker='o', color=Colors[i])
+    plt.text(x+0.001, y-0.002, type, fontsize=8)
